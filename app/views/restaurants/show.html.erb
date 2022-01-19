@@ -22,8 +22,23 @@
 
 <p>
   <strong>Review:</strong>
-  <%= @restaurant.review %>
+  <br>
+  <% @restaurant.reviews.each do |review|%>
+            <td> content: <%= review.content %></td>
+            <br>
+            <td>rating: <%= review.rating %></td>
+            <br>
+            
+        <% end %>
 </p>
-
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
+        
+<br>
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<%= link_to 'Back', restaurants_path %> |
+<br>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
